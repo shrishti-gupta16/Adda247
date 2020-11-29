@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.widget.CompoundButton" />
+        <import type="com.example.codingsample.utils.Utils" />
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.example.codingsample.data.User" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_elevation"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="@{item.name}"
+                android:maxLines="1"
+                android:textColor="@color/name_text_color"
+                android:drawableLeft="@drawable/ic_name"
+                android:drawablePadding="@dimen/profile_padding"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.email}"
+                android:textColor="@color/detail_text_color"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/profile_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toBottomOf="@+id/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.gender}"
+                android:textColor="@color/detail_text_color"
+                android:drawableLeft="@drawable/ic_gender"
+                android:drawablePadding="@dimen/profile_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toBottomOf="@+id/user_email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.status}"
+                android:textColor="@color/detail_text_color"
+                android:drawableLeft='@{item.status.equals("Active") ? @drawable/active_drawable : @drawable/inactive_drawable}'
+                android:drawablePadding="@dimen/profile_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toBottomOf="@+id/user_email"
+                app:layout_constraintStart_toEndOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/user_gender"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintGuide_percent=".5"
+                android:orientation="vertical"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
